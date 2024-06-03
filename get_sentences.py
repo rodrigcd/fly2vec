@@ -38,7 +38,7 @@ class SentenceGenerator(object):
             probs = softmax(node_connectivity, axis=1)
             next_nodes = [np.random.choice(self.J.shape[0], p=probs[i, :]) for i in range(self.batch_size)]
             batch_data.append(np.array(next_nodes).astype(int))
-        return np.stack(batch_data, axis=1)
+        return np.stack(batch_data, axis=1).tolist()
 
 
 if __name__ == "__main__":
